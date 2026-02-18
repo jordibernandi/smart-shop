@@ -4,7 +4,7 @@
   "private": true,
   "nx": {
     "implicitDependencies": [
-      "@smart-shop/auth-service"
+      "auth-service"
     ],
     "targets": {
       "e2e": {
@@ -17,8 +17,8 @@
           "passWithNoTests": true
         },
         "dependsOn": [
-          "@smart-shop/auth-service:build",
-          "@smart-shop/auth-service:serve"
+          "auth-service:build",
+          "auth-service:serve"
         ]
       }
     }

@@ -5,6 +5,7 @@
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
+    "baseUrl": ".",
     "lib": [
       "es2022"
     ],
@@ -20,6 +21,11 @@
     "target": "es2022",
     "customConditions": [
       "@smart-shop/source"
-    ]
+    ],
+    "paths": {
+      "@packages/*": [
+        "packages/*"
+      ]
+    }
   }
 }
