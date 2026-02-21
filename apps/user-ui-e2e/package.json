@@ -1,0 +1,10 @@
+{
+  "name": "@smart-shop/user-ui-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@smart-shop/user-ui"
+    ]
+  }
+}
