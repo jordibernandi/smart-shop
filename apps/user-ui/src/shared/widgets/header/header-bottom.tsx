@@ -6,7 +6,7 @@ import {
     Menu,
     X,
 } from "lucide-react";
-import HeaderActions from './headerActions';
+import HeaderActions from './header-actions';
 import { DEPARTMENTS, NAV_LINKS } from 'apps/user-ui/src/configs/constants';
 
 const HeaderBottom = () => {

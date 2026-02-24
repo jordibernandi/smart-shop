@@ -6,8 +6,8 @@ import {
     Search,
     Store,
 } from "lucide-react";
-import HeaderActions from "./headerActions";
-import HeaderBottom from "./headerBottom";
+import HeaderActions from "./header-actions";
+import HeaderBottom from "./header-bottom";
 
 const Header = () => {
     return (
