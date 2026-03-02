@@ -8,10 +8,10 @@ import prisma from "@packages/libs/prisma";
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 export const validationRegistrationData = (data: any, userType: "user" | "seller") => {
-    const { name, email, password, phone_number, country } = data;
-
+    const { name, email, password, phoneNumber, country } = data;
+    console.log("Data: ", data)
     if (
-        !name || !email || !password || (userType === "seller" && (!phone_number || !country))
+        !name || !email || !password || (userType === "seller" && (!phoneNumber || !country))
     ) {
         throw new ValidationError(`Missing required fields!`);
     }
@@ -82,7 +82,7 @@ export const handleForgotPassword = async (req: Request, res: Response, next: Ne
         if (!email) throw new ValidationError("Email is required!");
 
         // Find user/seller in DB
-        const user = userType === "user" && await prisma.users.findUnique({ where: { email } });
+        const user = userType === "user" ? await prisma.user.findUnique({ where: { email } }) : await prisma.seller.findUnique({ where: { email } });
 
         if (!user) throw new ValidationError(`${userType} not found!`);
 
@@ -91,7 +91,7 @@ export const handleForgotPassword = async (req: Request, res: Response, next: Ne
         await trackOtpRequests(email, next);
 
         // Generate OTP and send email
-        await sendOtp(user.name, email, "forgot-password-user-mail");
+        await sendOtp(user.name, email, userType === "user" ? "forgot-password-user-mail" : "forgot-password-seller-mail");
 
         res.status(200).json({ message: "OTP sent to email. Please verify your account." });
 
